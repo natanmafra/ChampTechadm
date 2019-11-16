@@ -22,7 +22,7 @@ public final class ConnectionFactory {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/db_champtech?useSSL=false";
             String usuario = "root";
-            String senha = "root";
+            String senha = "";
             
             connection = DriverManager.getConnection(url, usuario, senha);
             

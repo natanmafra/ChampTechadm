@@ -936,7 +936,10 @@ int id_classe;
 
     private void TabelaProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaProdutosMouseClicked
         // TODO add your handling code here:
-        
+            
+           int linha = this.TabelaProdutos.getSelectedRow();
+           
+           System.out.println(TabelaProdutos.getValueAt(linha, 0).toString());
            TabelaProdutos.setDefaultEditor(Object.class, null);
         
     }//GEN-LAST:event_TabelaProdutosMouseClicked
