@@ -364,6 +364,11 @@ public class Produtos extends javax.swing.JFrame {
         ));
         TabelaProdutos.setGridColor(new java.awt.Color(204, 204, 204));
         TabelaProdutos.setRowHeight(100);
+        TabelaProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelaProdutosMouseClicked(evt);
+            }
+        });
         ScrollPaneProdutos.setViewportView(TabelaProdutos);
 
         Produtos.add(ScrollPaneProdutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
@@ -504,9 +509,9 @@ public class Produtos extends javax.swing.JFrame {
         CadastrarProduto.setBackground(new java.awt.Color(255, 255, 255));
 
         cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "Placa mãe", "Processador", "Memoria ram", "Placa de video", "Fonte", "Armazenamento", "Gabinete", "Computador" }));
-        cbCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(null), null));
+        cbCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Categoria"));
 
-        txtNomeProduto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(null), null));
+        txtNomeProduto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Nome"));
         txtNomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeProdutoActionPerformed(evt);
@@ -515,14 +520,14 @@ public class Produtos extends javax.swing.JFrame {
 
         txtFichaProduto.setColumns(20);
         txtFichaProduto.setRows(5);
-        txtFichaProduto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(null), null));
+        txtFichaProduto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ficha Técnica"));
         jScrollPane1.setViewportView(txtFichaProduto);
 
-        txtPreco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(null), null));
+        txtPreco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Preco"));
 
         btSalvar.setBackground(new java.awt.Color(255, 255, 255));
         btSalvar.setText("SALVAR");
-        btSalvar.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        btSalvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalvarActionPerformed(evt);
@@ -531,7 +536,7 @@ public class Produtos extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel1.setText("                            Inserir");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout CadastrarProdutoLayout = new javax.swing.GroupLayout(CadastrarProduto);
         CadastrarProduto.setLayout(CadastrarProdutoLayout);
@@ -574,7 +579,7 @@ public class Produtos extends javax.swing.JFrame {
         InserirFuncionario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         comboUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comun", "Administrador" }));
-        comboUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        comboUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         InserirFuncionario.add(comboUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 342, 20));
 
         txtUsuarioADM.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
@@ -589,7 +594,7 @@ public class Produtos extends javax.swing.JFrame {
 
         txtEmailADM.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         txtEmailADM.setText("Email");
-        txtEmailADM.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        txtEmailADM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmailADM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtEmailADMMouseClicked(evt);
@@ -614,7 +619,7 @@ public class Produtos extends javax.swing.JFrame {
 
         btOk.setBackground(new java.awt.Color(255, 255, 255));
         btOk.setText("OK");
-        btOk.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        btOk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btOkActionPerformed(evt);
@@ -628,7 +633,7 @@ public class Produtos extends javax.swing.JFrame {
 
         txtSenhaADM.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         txtSenhaADM.setText("12345678");
-        txtSenhaADM.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        txtSenhaADM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtSenhaADM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtSenhaADMMouseClicked(evt);
@@ -691,11 +696,11 @@ public class Produtos extends javax.swing.JFrame {
                     @Override
                     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
                         
-                        CompletableFuture.runAsync(() -> {
-                            ImageIcon icon = new ImageIcon("images/r9.png");
-                            icon.setImage(icon.getImage().getScaledInstance(100, 100, 4));
-                            this.setIcon(icon);
-                        });
+//                        CompletableFuture.runAsync(() -> {
+//                            ImageIcon icon = new ImageIcon("images/r9.png");
+//                            icon.setImage(icon.getImage().getScaledInstance(100, 100, 4));
+//                            this.setIcon(icon);
+//                        });
                      
                         
                         return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
@@ -866,6 +871,13 @@ int id_classe;
     private void txtNomeADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeADMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeADMActionPerformed
+
+    private void TabelaProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaProdutosMouseClicked
+        // TODO add your handling code here:
+        
+           TabelaProdutos.setDefaultEditor(Object.class, null);
+        
+    }//GEN-LAST:event_TabelaProdutosMouseClicked
     private String InserirAdm(int id_classe, String usuario, String senha, String email, String nome) throws SQLException{
         
         
