@@ -65,7 +65,7 @@ public class Produtos extends javax.swing.JFrame {
         
         ImageIcon Adds = new ImageIcon("Add.png");
         Adds.setImage(Adds.getImage().getScaledInstance(btAdd1.getWidth(), btAdd1.getHeight(), Image.SCALE_SMOOTH));
-        btAdd.setIcon(Adds);
+        btAdd1.setIcon(Adds);
 
         this.cardLayoutGeral = (CardLayout) PAI.getLayout();
     }
@@ -376,17 +376,9 @@ public class Produtos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Ficha", "Preço R$", "Quantidade", "Action"
+                "Código Produto", "Nome", "Ficha", "Preço R$", "Quantidade"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         TabelaProdutos.setGridColor(new java.awt.Color(204, 204, 204));
         TabelaProdutos.setRowHeight(100);
         TabelaProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -551,8 +543,13 @@ public class Produtos extends javax.swing.JFrame {
 
         cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "Placa mãe", "Processador", "Memoria ram", "Placa de video", "Fonte", "Armazenamento", "Gabinete", "Computador" }));
         cbCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Categoria"));
+        cbCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCategoriaActionPerformed(evt);
+            }
+        });
 
-        txtNomeProduto.setBorder(new javax.swing.border.MatteBorder(null));
+        txtNomeProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeProdutoActionPerformed(evt);
@@ -561,10 +558,10 @@ public class Produtos extends javax.swing.JFrame {
 
         txtFichaProduto.setColumns(20);
         txtFichaProduto.setRows(5);
-        txtFichaProduto.setBorder(new javax.swing.border.MatteBorder(null));
+        txtFichaProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txtFichaProduto);
 
-        txtPreco.setBorder(new javax.swing.border.MatteBorder(null));
+        txtPreco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecoActionPerformed(evt);
@@ -646,7 +643,7 @@ public class Produtos extends javax.swing.JFrame {
 
         txtUsuarioADM.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         txtUsuarioADM.setText("Usuario");
-        txtUsuarioADM.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        txtUsuarioADM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtUsuarioADM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtUsuarioADMMouseClicked(evt);
@@ -666,7 +663,7 @@ public class Produtos extends javax.swing.JFrame {
 
         txtNomeADM.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         txtNomeADM.setText("Nome");
-        txtNomeADM.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        txtNomeADM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNomeADM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNomeADMMouseClicked(evt);
@@ -770,10 +767,11 @@ public class Produtos extends javax.swing.JFrame {
                 };
 
                 while (result.next()) {
+                    String idProduto = result.getString("id_produto");
                     String nome = result.getString("nome");
                     String ficha = result.getString("ficha");
                     String preco = result.getString("preco");
-                    mo.addRow(new Object[]{nome, ficha, preco, ""});
+                    mo.addRow(new Object[]{idProduto, nome, ficha, preco, ""});
                 }
                 TabelaProdutos.setModel(mo);
                 TabelaProdutos.getColumnModel().getColumn(0).setCellRenderer(meu);
@@ -817,8 +815,8 @@ public class Produtos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
     int id_categoria;
     private void btEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEditarMouseClicked
+        txtNomeProduto.setText('Gayy');
         cardLayoutGeral.show(PAI, "cadastrarProdutoCard");
-
     }//GEN-LAST:event_btEditarMouseClicked
     String image_path = null;
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
@@ -936,10 +934,6 @@ int id_classe;
 
     private void TabelaProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaProdutosMouseClicked
         // TODO add your handling code here:
-            
-           int linha = this.TabelaProdutos.getSelectedRow();
-           
-           System.out.println(TabelaProdutos.getValueAt(linha, 0).toString());
            TabelaProdutos.setDefaultEditor(Object.class, null);
         
     }//GEN-LAST:event_TabelaProdutosMouseClicked
@@ -948,12 +942,32 @@ int id_classe;
     }//GEN-LAST:event_txtPrecoActionPerformed
 
     private void btAdd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAdd1MouseClicked
-        // TODO add your handling code here:
+        cardLayoutGeral.show(PAI, "cadastrarProdutoCard"); 
     }//GEN-LAST:event_btAdd1MouseClicked
 
     private void btExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btExcluirMouseClicked
         // TODO add your handling code here:
+        
+        int linha = this.TabelaProdutos.getSelectedRow();   
+        String IdProduto = TabelaProdutos.getValueAt(linha, 0).toString();
+        String txtSQL = "delete from tb_produto where id_produto = " + IdProduto + ";";
+        Statement banco;
+        try{
+            banco = (Statement) ConnectionFactory.getStatement();
+            int result = banco.executeUpdate(txtSQL);
+            DefaultTableModel model = (DefaultTableModel) TabelaProdutos.getModel();
+            model.removeRow(linha);
+            JOptionPane.showMessageDialog(this, "Produto Excluído com Sucesso!");
+            System.err.println(result);
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(Produtos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btExcluirMouseClicked
+
+    private void cbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbCategoriaActionPerformed
     private String InserirAdm(int id_classe, String usuario, String senha, String email, String nome) throws SQLException{
         
         
